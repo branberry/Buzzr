@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { BuzzerPage } from '../buzzer/buzzer';
 
 @Component({
   selector: 'page-home',
@@ -10,5 +11,9 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+
+  openBuzzerPage() {
+    this.navCtrl.push(BuzzerPage);
+    }
 
 }
