@@ -18,6 +18,10 @@ export class BuzzerPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  popThis() {
+    this.navCtrl.pop();
+  }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuzzerPage');
   }
