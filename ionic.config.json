@@ -1,0 +1,8 @@
+{
+  "name": "BuzzerApp",
+  "app_id": "cd518bda",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
