@@ -9,15 +9,15 @@
   <!-- Login tags  -->
   <ion-item>
     <ion-label>Username</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" #username></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" #password></ion-input>
   </ion-item>
 
   <div padding>
-    <button ion-button>Sign In</button>
+    <button ion-button block (click)="signIn()">Sign In</button>
   </div>
 </ion-content>

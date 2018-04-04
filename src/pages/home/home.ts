@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BuzzerPage } from '../buzzer/buzzer';
 
@@ -8,12 +8,15 @@ import { BuzzerPage } from '../buzzer/buzzer';
 })
 export class HomePage {
 
+  @ViewChild('username') uname;
+  @ViewChild('password') password;
+
   constructor(public navCtrl: NavController) {
 
   }
 
-  openBuzzerPage() {
-    this.navCtrl.push(BuzzerPage);
-    }
+  signIn() {
+    console.log(this.uname.value, this.password.value);
+  }
 
 }
