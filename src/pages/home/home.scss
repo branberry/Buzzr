@@ -2,4 +2,8 @@ page-home {
     #topButtons {
         display: flex;
     }
+
+    #topButtons button {
+        flex: 1;
+    }
 }

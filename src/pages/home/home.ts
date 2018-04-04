@@ -11,15 +11,18 @@ import { LoginPage } from '../login/login';
 })
 export class HomePage {
 
-  @ViewChild('username') uname;
-  @ViewChild('password') password;
+  
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
   }
 
   signIn() {
-    console.log(this.uname.value, this.password.value);
+    this.navCtrl.push(LoginPage);
+  }
+
+  register() {
+    this.navCtrl.push(RegisterPage);
   }
 
 }
