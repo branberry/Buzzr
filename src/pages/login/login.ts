@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,6 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  @ViewChild('username') uname;
+  @ViewChild ('password') password;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -23,7 +25,7 @@ export class LoginPage {
   }
 
   signInUser() {
-    console.log("Hello World!!!");
+    console.log("Username: " + this.uname.value + "\n Password: " + this.password.value);
   }
 
 }
