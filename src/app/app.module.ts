@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import {AngularFireModule} from "angularfire2";
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -13,15 +14,7 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-const firebaseAuth = {
-  apiKey: "AIzaSyCHInvxGN41US_o-TQVP9QQFvSUB8lS09Q",
-  authDomain: "buzzer-project.firebaseapp.com",
-  databaseURL: "https://buzzer-project.firebaseio.com",
-  projectId: "buzzer-project",
-  storageBucket: "buzzer-project.appspot.com",
-  messagingSenderId: "828030420257"
-};
+import { FIREBASE_CONFIG } from './app.firebase.config';
 
 @NgModule({
   declarations: [
@@ -36,7 +29,8 @@ const firebaseAuth = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
