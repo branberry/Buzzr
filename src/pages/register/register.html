@@ -15,6 +15,7 @@
 
 <ion-content padding>
     <ion-list>
+<<<<<<< HEAD
       <ion-item>
         <ion-label floating> Email</ion-label>
         <ion-input type="text" [(ngModel)]="user.email"></ion-input>
@@ -27,4 +28,17 @@
        
     </ion-list>
   <button ion-button (click)="register(user)">Register</button>
+=======
+        <ion-item>
+          <ion-label floating> Email </ion-label>
+          <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+ 
+    </ion-list>
+  <button ion-button (click)="registerUser(user)">Register</button>
+>>>>>>> 0d8d3c70a6d748d8d0452419d41ac48c30aed18d
 </ion-content>
