@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { RegisterPage } from '../register/register';
+import { User } from '../../models/user';
 /**
  * Generated class for the LoginPage page.
  *
@@ -14,9 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  @ViewChild('username') uname;
-  @ViewChild ('password') password;
-
+  user = {} as User;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -25,7 +24,10 @@ export class LoginPage {
   }
 
   signInUser() {
-    console.log("Username: " + this.uname.value + "\n Password: " + this.password.value);
+  }
+
+  register() {
+    this.navCtrl.push(RegisterPage);
   }
 
 }
