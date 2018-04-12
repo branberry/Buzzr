@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, AlertController , ToastController} from 'ionic-angular';
+import {AngularFireAuth  } from "angularfire2/auth";
 /**
  * Generated class for the BuzzerPage page.
  *
@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class BuzzerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(private afauth: AngularFireAuth, private toast: ToastController,public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   popThis() {
@@ -33,7 +33,19 @@ export class BuzzerPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuzzerPage');
+    this.afauth.authState.subscribe(data=> {
+      if(data && data.email && data.uid){
+        this.toast.create({
+          message: 'Welcome to BuzzerApp, ${data.email}',
+          duration: 3000
+        }).present();
+      }else{
+        this.toast.create({
+          message: 'Sorry, could not find authentication details.',
+          duration: 3000
+        }).present();
+      }
+    })
   }
 
 }

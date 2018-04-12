@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../models/user';
+import { AngularFireAuth } from "angularfire2/auth";
+import { BuzzerPage } from '../buzzer/buzzer';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,18 +17,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  @ViewChild('username') uname;
-  @ViewChild ('password') password;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+ 
+  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
-  signInUser() {
-    console.log("Username: " + this.uname.value + "\n Password: " + this.password.value);
+  async login(user: User) {
+    try {
+      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      if (result){
+        this.navCtrl.setRoot(BuzzerPage);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
 }
