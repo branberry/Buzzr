@@ -2,11 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-<<<<<<< HEAD
-import {AngularFireModule} from "angularfire2";
-=======
 import { AngularFireModule } from "angularfire2";
->>>>>>> 0d8d3c70a6d748d8d0452419d41ac48c30aed18d
 import { AngularFireAuthModule } from "angularfire2/auth";
 
 import { AboutPage } from '../pages/about/about';
