@@ -17,19 +17,20 @@ export class TabsPage {
   tab1Root = BuzzerPage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
+  title: String;
+  titles = ["Buzzer","About","Contact"];
 
   constructor(private afauth: AngularFireAuth,public navCtrl: NavController) {
-    afauth.authState.subscribe(user => {
-      if (!user) {
-        //couldn't get user 
-        return;
-      }
-    });
+    this.title = this.titles[0];
   }
 
   signout(){
     this.afauth.auth.signOut();
     this.navCtrl.setRoot(HomePage);
+  }
+
+  tabChanged(tab){
+    this.title = this.titles[tab];
   }
   
 }

@@ -12,6 +12,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BuzzerPage } from '../pages/buzzer/buzzer';
 import { RegisterPage } from '../pages/register/register';
+import { Facebook } from '@ionic-native/facebook';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -48,7 +50,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Facebook
   ]
 })
 export class AppModule {}

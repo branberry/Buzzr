@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="primary">
-      <ion-title>Tabs</ion-title>
+      <ion-title>{{title}}</ion-title>
       <ion-buttons end>
           <button ion-button icon-only (click)="signout()">
             <ion-icon name="log-out"></ion-icon>
@@ -9,7 +9,7 @@
     </ion-navbar>
   </ion-header>
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Buzzer" tabIcon="alarm"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contact"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Buzzer" tabIcon="alarm" (ionSelect)="tabChanged(0)"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle" (ionSelect)="tabChanged(1)"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contact" (ionSelect)="tabChanged(2)"></ion-tab>
 </ion-tabs>

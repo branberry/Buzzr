@@ -4,6 +4,8 @@ import { BuzzerPage } from '../buzzer/buzzer';
 import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models/user';
+import { Platform } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
 
 import * as firebase from 'firebase/app';
 import { TabsPage } from '../tabs/tabs';
@@ -18,7 +20,7 @@ export class HomePage {
   user = {} as User;
   loader: any;
 
-  constructor(private afauth: AngularFireAuth,public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(private afauth: AngularFireAuth, private fb: Facebook, private platform: Platform, public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   
   }
   
@@ -38,14 +40,22 @@ export class HomePage {
 
   signInWithFacebook() {
     this.presentLoading();
-    this.afauth.auth
-      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then(res => {
-        if (res){
+    if (this.platform.is('cordova')) {
+      return this.fb.login(['email', 'public_profile']).then(res => {
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        this.loader.dismiss();
+        this.navCtrl.setRoot(TabsPage);
+        return firebase.auth().signInWithCredential(facebookCredential);
+
+      })
+    }else {
+      this.afauth.auth
+        .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then((res) => {
           this.navCtrl.setRoot(TabsPage);
           this.loader.dismiss();
-        }
-      });
+        });
+    }
   }
 
   register() {
