@@ -14,11 +14,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'restaurant-list.html',
 })
 export class RestaurantListPage {
+  items = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    for(let i = 0; i < 30; i++) {
+      this.items.push(this.items.length);
+    }
+    
     
   }
 
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+        for(let i = 0; i < 30; i++) {
+          this.items.push(this.items.length);
+        }
+        console.log('Async operation has ended');
+        infiniteScroll.complete();
+      }, 500);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantListPage');
   }
