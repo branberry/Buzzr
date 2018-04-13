@@ -1,16 +1,22 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Buzzer</ion-title>
+    <ion-title>Buzzer Login</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <h2>Welcome to Buzzer!</h2>
   <!-- Login tags  -->
-  <div padding id="topButtons">
-    <button ion-button (click)="signIn()">Sign In</button>
-  </div>
-  <div padding id="topButtons">
-    <button ion-button (click)="register()">Register</button>
-  </div>
+  <ion-item>
+      <ion-label floating> Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button (click)="login(user)">Login</button>
+  <button ion-button color="secondary" (click)="register()">Register</button>
+  <button ion-button outline color="#3b5998" (click)="signInWithFacebook()">Login with Facebook</button>
 </ion-content>

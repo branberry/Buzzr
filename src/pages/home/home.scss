@@ -1,9 +1,7 @@
 page-home {
-    #topButtons {
-        display: flex;
-    }
-
-    #topButtons button {
-        flex: 1;
+    button {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
