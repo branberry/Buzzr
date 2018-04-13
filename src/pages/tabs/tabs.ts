@@ -6,6 +6,7 @@ import { HomePage } from '../home/home';
 import { BuzzerPage } from '../buzzer/buzzer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NavController} from 'ionic-angular';
+import { RestaurantListPage } from '../restaurant-list/restaurant-list';
 import * as firebase from 'firebase/app';
 
 
@@ -15,10 +16,11 @@ import * as firebase from 'firebase/app';
 export class TabsPage {
 
   tab1Root = BuzzerPage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab2Root = RestaurantListPage;
+  tab3Root = AboutPage;
+  tab4Root = ContactPage;
   title: String;
-  titles = ["Buzzer","About","Contact"];
+  titles = ["Buzzer","Restaurants","About","Contact"];
 
   constructor(private afauth: AngularFireAuth,public navCtrl: NavController) {
     this.title = this.titles[0];

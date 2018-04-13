@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BuzzerPage } from '../pages/buzzer/buzzer';
 import { RegisterPage } from '../pages/register/register';
+import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
 
 
@@ -27,7 +28,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     HomePage,
     TabsPage,
     BuzzerPage,
-    RegisterPage
+    RegisterPage,
+    RestaurantListPage,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     TabsPage,
     BuzzerPage,
     RegisterPage,
+    RestaurantListPage,
   ],
   providers: [
     StatusBar,
