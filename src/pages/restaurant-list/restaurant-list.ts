@@ -16,14 +16,17 @@ import { IonicPage, NavController, NavParams, ActionSheetController, AlertContro
 export class RestaurantListPage {
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams, 
+    public actionSheetCtrl: ActionSheetController, 
+    public alertCtrl: AlertController
+    ) {
 
-    // pushing arbitrary values into an array
+    // pushing arbitrary values into an array to display for the list
     for(let i = 0; i < 100; i++) {      
       this.items.push(this.items.length);
-    }
-    
-    
+    }   
   }
 
   /**
@@ -52,7 +55,7 @@ export class RestaurantListPage {
   viewRestaurant(restaurantNum: number) {
     let actionSheet = this.actionSheetCtrl.create({
       // title of the individual restaurant
-      title: 'Restaurant' + restaurantNum.toString() + ' Information',
+      title: 'Restaurant ' + restaurantNum.toString() + ' Information',
       buttons: [
         {
           text: 'Restaurant Queue',

@@ -16,9 +16,11 @@ import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
 
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     SplashScreen,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Facebook
+    Facebook,
+    RestProvider 
   ]
 })
 export class AppModule {}
