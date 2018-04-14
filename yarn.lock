@@ -1024,6 +1024,10 @@ cordova-plugin-ionic-webview@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.2.0.tgz#83a3a7743422833899d623c074d8a0e39d36a6a1"
 
+cordova-plugin-mauron85-background-geolocation@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-mauron85-background-geolocation/-/cordova-plugin-mauron85-background-geolocation-2.3.5.tgz#c5e3eb0f9f96d427892e084334d8a4e23a80f001"
+
 cordova-plugin-splashscreen@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-5.0.2.tgz#747e74f56e201cd585bc62d14bca19f6867ff1ed"
