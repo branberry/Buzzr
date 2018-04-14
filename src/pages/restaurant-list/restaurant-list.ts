@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the RestaurantListPage page.
@@ -16,7 +16,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 export class RestaurantListPage {
   items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController) {
 
     // pushing arbitrary values into an array
     for(let i = 0; i < 100; i++) {      
@@ -28,7 +28,7 @@ export class RestaurantListPage {
 
   /**
    * This method takes in as an argument an event so that it may continue to load more information
-   * @param infiniteScroll 
+   * @param infiniteScroll the scroll event that is passed in from the html
    */
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
@@ -47,10 +47,12 @@ export class RestaurantListPage {
 
   /**
    * This function is called when the user opens the page
+   * @param restaurantNum the value of the restaurant (placeholder param)
    */
-  viewRestaurant() {
+  viewRestaurant(restaurantNum: number) {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Restaurant Information',
+      // title of the individual restaurant
+      title: 'Restaurant' + restaurantNum.toString() + ' Information',
       buttons: [
         {
           text: 'Restaurant Queue',
@@ -71,6 +73,35 @@ export class RestaurantListPage {
     console.log("Page loaded")
   }
 
+  /**
+   * This function checks the user into the given restaurant
+   * Prompts the user to input check in information
+   * @param restaurantNum the value of the restaurant (placeholder param)
+   */
+  enqueue(restaurantNum: number) {
+    let alert = this.alertCtrl.create({
+      title: 'Check in',
+      inputs: [
+        {
+          name: 'Party name',
+          placeholder: 'e.g., Brandon\'s party',
+        },
+        {
+          name: 'Number of seats',
+          placeholder: 'enter number of guests',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Check in',
+          handler: () => {
+            console.log('User checked in');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantListPage');
   }

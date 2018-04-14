@@ -25,8 +25,8 @@
       </ion-thumbnail>
       <h2>Restaurant {{i}}</h2>
       <p>Super delicious food!</p>
-      <button ion-button clear item-end>Check in</button>
-      <button ion-button clear item-end (click)="viewRestaurant()">Restaurant Page</button>
+      <button ion-button clear item-end (click)="enqueue(i)">Check in</button>
+      <button ion-button clear item-end (click)="viewRestaurant(i)">Restaurant Page</button>
     </ion-item>
   </ion-list>
 
