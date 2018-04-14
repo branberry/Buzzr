@@ -89,4 +89,5 @@
         <variable name="APP_ID" value="2057601844500059" />
         <variable name="APP_NAME" value="BuzzerApp" />
     </plugin>
+    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5" />
 </widget>

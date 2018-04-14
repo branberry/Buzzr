@@ -175,6 +175,10 @@
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.7.tgz#0495fd7294348d9887abb182aa27432cb8936488"
 
+"@ionic-native/background-geolocation@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/background-geolocation/-/background-geolocation-4.7.0.tgz#d67d2fc16616375a437a628a6a39f12f35ca4a35"
+
 "@ionic-native/core@4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.6.0.tgz#75129be4225a87f3fb05bf58fcec3edc481b190d"

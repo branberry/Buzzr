@@ -15,10 +15,25 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let i of items">{{i}}</ion-item>
+    <!-- 
+      This div utilizes the array from the resaurant-list.ts file named 'items'
+      loops through each element in that array and then displays a thumbnail of each
+    -->
+    <ion-item *ngFor="let i of items">
+      <ion-thumbnail item-start>
+          <img src="../../assets/imgs/logo.png">
+      </ion-thumbnail>
+      <h2>Restaurant {{i}}</h2>
+      <p>Super delicious food!</p>
+      <button ion-button clear item-end>Check in</button>
+    </ion-item>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more restaurants"
+    >
+    </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

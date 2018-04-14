@@ -17,8 +17,10 @@ export class RestaurantListPage {
   items = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    for(let i = 0; i < 30; i++) {
-      this.items.push(this.items.length);
+    for(let i = 0; i < 100; i++) {
+
+      
+      this.items.push(i);
     }
     
     
@@ -28,9 +30,11 @@ export class RestaurantListPage {
     console.log('Begin async operation');
 
     setTimeout(() => {
-        for(let i = 0; i < 30; i++) {
-          this.items.push(this.items.length);
-        }
+      for(let i = 0; i < 10; i++) {
+
+      
+        this.items.push(i);
+      }
         console.log('Async operation has ended');
         infiniteScroll.complete();
       }, 500);
