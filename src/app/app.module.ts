@@ -14,6 +14,7 @@ import { BuzzerPage } from '../pages/buzzer/buzzer';
 import { RegisterPage } from '../pages/register/register';
 import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 
 
 
@@ -38,6 +39,7 @@ import { RestProvider } from '../providers/rest/rest';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
+    HttpClientModule,
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
@@ -57,6 +59,7 @@ import { RestProvider } from '../providers/rest/rest';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
+    HttpClient,
     RestProvider 
   ]
 })

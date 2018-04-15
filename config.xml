@@ -90,4 +90,5 @@
         <variable name="APP_NAME" value="BuzzerApp" />
     </plugin>
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5" />
+    <engine name="android" spec="~7.0.0" />
 </widget>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
-
+import { RestProvider } from '../../providers/rest/rest';
 /**
  * Generated class for the RestaurantListPage page.
  *
@@ -20,7 +20,8 @@ export class RestaurantListPage {
     public navCtrl: NavController,
     public navParams: NavParams, 
     public actionSheetCtrl: ActionSheetController, 
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public rest: RestProvider
     ) {
 
     // pushing arbitrary values into an array to display for the list
