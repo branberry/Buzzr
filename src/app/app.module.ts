@@ -15,8 +15,7 @@ import { RegisterPage } from '../pages/register/register';
 import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
-
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -57,10 +56,12 @@ import { RestProvider } from '../providers/rest/rest';
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     Facebook,
     HttpClient,
-    RestProvider 
+    RestProvider,
+    Geolocation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+
   ]
 })
 export class AppModule {}

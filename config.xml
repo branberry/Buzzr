@@ -91,4 +91,7 @@
     </plugin>
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5" />
     <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

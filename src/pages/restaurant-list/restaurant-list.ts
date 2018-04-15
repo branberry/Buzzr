@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the RestaurantListPage page.
  *
@@ -15,12 +16,15 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class RestaurantListPage {
   items = [];
+  lat: any;
+  lng: any;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
     public actionSheetCtrl: ActionSheetController, 
     public alertCtrl: AlertController,
+    public geo: Geolocation,
     public rest: RestProvider
     ) {
 
@@ -106,7 +110,14 @@ export class RestaurantListPage {
     });
     alert.present();
   }
+
   ionViewDidLoad() {
+    this.geo.getCurrentPosition().then( pos => {
+      this.lat = pos.coords.latitude;
+      this.lng = pos.coords.longitude;
+      console.log(this.lat);
+      console.log(this.lng);
+    }).catch(e => console.error(e));
     console.log('ionViewDidLoad RestaurantListPage');
   }
 

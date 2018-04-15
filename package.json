@@ -24,6 +24,7 @@
     "@ionic-native/background-geolocation": "^4.7.0",
     "@ionic-native/core": "4.6.0",
     "@ionic-native/facebook": "^4.7.0",
+    "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/splash-screen": "4.6.0",
     "@ionic-native/status-bar": "4.6.0",
     "@ionic/pro": "^1.0.20",
@@ -33,6 +34,7 @@
     "cordova-ios": "~4.5.4",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-facebook4": "^1.10.0",
+    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.2.0",
     "cordova-plugin-mauron85-background-geolocation": "^2.3.5",
@@ -62,7 +64,10 @@
         "APP_ID": "2057601844500059",
         "APP_NAME": "BuzzerApp"
       },
-      "cordova-plugin-mauron85-background-geolocation": {}
+      "cordova-plugin-mauron85-background-geolocation": {},
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+      }
     },
     "platforms": [
       "ios",
