@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
-import { RestProvider } from '../../providers/rest/rest';
 import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the RestaurantListPage page.
@@ -25,7 +24,6 @@ export class RestaurantListPage {
     public actionSheetCtrl: ActionSheetController, 
     public alertCtrl: AlertController,
     public geo: Geolocation,
-    public rest: RestProvider
     ) {
 
     // pushing arbitrary values into an array to display for the list

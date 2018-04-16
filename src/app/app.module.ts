@@ -20,7 +20,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
@@ -58,7 +57,6 @@ import { RestProvider } from '../providers/rest/rest';
     AngularFireDatabase,
     Facebook,
     HttpClient,
-    RestProvider,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
