@@ -36,3 +36,4 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 secretKey.json
+src/app/secrets.config.ts
