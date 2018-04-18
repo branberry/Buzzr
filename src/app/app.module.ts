@@ -16,11 +16,10 @@ import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation';
-import { AgmCoreModule } from '@agm/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import { GoogleMapComponent } from '../components/google-map/google-map';
+import { GoogleMapPage } from '../pages/google-map/google-map';
 
 @NgModule({
   declarations: [
@@ -32,15 +31,13 @@ import { GoogleMapComponent } from '../components/google-map/google-map';
     BuzzerPage,
     RegisterPage,
     RestaurantListPage,
-    GoogleMapComponent
+    GoogleMapPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AgmCoreModule.forRoot({
-      apiKey: SECRETS.googleApiKey,
-    }),
+
     AngularFireDatabaseModule,
     HttpClientModule,
     AngularFireAuthModule
@@ -55,7 +52,7 @@ import { GoogleMapComponent } from '../components/google-map/google-map';
     BuzzerPage,
     RegisterPage,
     RestaurantListPage,
-    GoogleMapComponent
+    GoogleMapPage
   ],
   providers: [
     StatusBar,
