@@ -7,6 +7,7 @@ import { BuzzerPage } from '../buzzer/buzzer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NavController} from 'ionic-angular';
 import { RestaurantListPage } from '../restaurant-list/restaurant-list';
+import { GoogleMapComponent } from '../../components/google-map/google-map';
 import * as firebase from 'firebase/app';
 
 
@@ -19,8 +20,10 @@ export class TabsPage {
   tab2Root = RestaurantListPage;
   tab3Root = AboutPage;
   tab4Root = ContactPage;
+  tab5Root = GoogleMapComponent;
+
   title: String;
-  titles = ["Buzzer","Restaurants","About","Contact"];
+  titles = ["Buzzer","Restaurants","About","Contact", "Map"];
 
   constructor(private afauth: AngularFireAuth,public navCtrl: NavController) {
     this.title = this.titles[0];

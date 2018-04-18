@@ -20,6 +20,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { GoogleMapComponent } from '../components/google-map/google-map';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     BuzzerPage,
     RegisterPage,
     RestaurantListPage,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     BuzzerPage,
     RegisterPage,
     RestaurantListPage,
+    GoogleMapComponent
   ],
   providers: [
     StatusBar,

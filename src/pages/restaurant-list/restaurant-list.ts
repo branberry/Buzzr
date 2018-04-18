@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMapComponent } from '../../components/google-map/google-map';
+
 /**
  * Generated class for the RestaurantListPage page.
  *
