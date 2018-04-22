@@ -1,3 +1,9 @@
+Node version: v9.11.1
+
+Cordova version: 8.0.0
+
+Config.xml file: 
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.buzzerapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BuzzerApp</name>
@@ -20,10 +26,6 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
-        <config-file parent="/resources" target="./res/values/strings.xml">
-            <string name="fb_app_id">1234</string>
-            <string name="fb_app_name">foobar</string>
-        </config-file>
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -85,6 +87,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <engine name="ios" spec="~4.5.4" />
     <allow-navigation href="http://169.254.102.91:8100" />
     <allow-navigation href="http://169.254.131.42:8100" />
     <allow-navigation href="http://10.0.0.37:8100" />
@@ -96,6 +99,69 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <engine name="ios" spec="~4.5.4" />
-    <engine name="android" spec="^7.0.0" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
+
+
+Plugins: 
+
+cordova-plugin-device,cordova-plugin-facebook4,cordova-plugin-geolocation,cordova-plugin-ionic-keyboard,cordova-plugin-ionic-webview,cordova-plugin-mauron85-background-geolocation,cordova-plugin-splashscreen,cordova-plugin-whitelist
+
+Android platform:
+
+**************************************************************************
+The "android" command is deprecated.
+For manual SDK, AVD, and project management, please use Android Studio.
+For command-line tools, use tools\bin\sdkmanager.bat
+and tools\bin\avdmanager.bat
+**************************************************************************
+
+Invoking "C:\Android\sdk\tools\bin\avdmanager" list target
+
+Loading local repository...                                                     [=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       Available Android targets:
+----------
+id: 1 or "android-23"
+     Name: Android API 23
+     Type: Platform
+     API level: 23
+     Revision: 3
+----------
+id: 2 or "Google Inc.:Google APIs:24"
+     Name: Google APIs
+     Type: Add-On
+     Vendor: Google Inc.
+     Revision: 1
+     Description: Google APIs
+     Based on Android 7.0 (API level 24)
+     Libraries:
+      * com.google.android.maps (maps.jar)
+          API for Google Maps
+      * com.android.future.usb.accessory (usb.jar)
+          API for USB Accessories
+      * com.google.android.media.effects (effects.jar)
+          Collection of video effects
+----------
+id: 3 or "android-24"
+     Name: Android API 24
+     Type: Platform
+     API level: 24
+     Revision: 2
+----------
+id: 4 or "android-25"
+     Name: Android API 25
+     Type: Platform
+     API level: 25
+     Revision: 3
+----------
+id: 5 or "android-26"
+     Name: Android API 26
+     Type: Platform
+     API level: 26
+     Revision: 2
+----------
+id: 6 or "android-27"
+     Name: Android API 27
+     Type: Platform
+     API level: 27
+     Revision: 1
+
