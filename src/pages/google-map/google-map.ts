@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Device } from '@ionic-native/device';
+
 /**
  * Generated class for the GoogleMapPage page.
  *
@@ -45,7 +47,7 @@ export class GoogleMapPage {
     watch.subscribe(data => {
       this.deleteMarkers();
       let updateLocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
-      let image = 'assets/imgs/logo.png';
+      let image = 'assets/imgs/marker.png';
       this.addMarker(updateLocation,image);
       this.setMapOnAll(this.map);
     });

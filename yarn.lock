@@ -187,6 +187,10 @@
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.6.0.tgz#75129be4225a87f3fb05bf58fcec3edc481b190d"
 
+"@ionic-native/device@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-4.7.0.tgz#739587cb6666088e76c449231d02e9aec467912e"
+
 "@ionic-native/facebook@^4.7.0":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/facebook/-/facebook-4.7.0.tgz#d9986e447bc43bc544a5053497abc680bcc3c679"
@@ -330,7 +334,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-android-versions@^1.2.1:
+android-versions@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/android-versions/-/android-versions-1.3.0.tgz#ce6f3eae2e165ce4ed49b89beb68014741093044"
   dependencies:
@@ -1010,11 +1014,11 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-cordova-android@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/cordova-android/-/cordova-android-7.0.0.tgz#c95bedfcfbc3863b180c4d29effec4f79361d19d"
+cordova-android@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/cordova-android/-/cordova-android-7.1.0.tgz#1cd36ee7b9d19bad50d3e9842b731fe590924dd5"
   dependencies:
-    android-versions "^1.2.1"
+    android-versions "^1.3.0"
     cordova-common "^2.2.0"
     elementtree "0.1.6"
     nopt "^3.0.1"

@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "5.2.9",
     "@ionic-native/background-geolocation": "^4.7.0",
     "@ionic-native/core": "4.6.0",
+    "@ionic-native/device": "^4.7.0",
     "@ionic-native/facebook": "^4.7.0",
     "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/splash-screen": "4.6.0",
