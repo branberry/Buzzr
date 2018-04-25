@@ -16,6 +16,7 @@ import { RestaurantListPage } from '../pages/restaurant-list/restaurant-list';
 import { Facebook } from '@ionic-native/facebook';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Device } from '@ionic-native/device';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
@@ -62,6 +63,7 @@ import { GoogleMapPage } from '../pages/google-map/google-map';
     HttpClient,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Device,
 
   ]
 })

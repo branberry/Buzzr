@@ -28,7 +28,7 @@ export class RestaurantListPage {
     ) {
 
     // pushing arbitrary values into an array to display for the list
-    for(let i = 0; i < 100; i++) {      
+    for(let i = 0; i < 10; i++) {      
       this.items.push(this.items.length);
     }   
   }
