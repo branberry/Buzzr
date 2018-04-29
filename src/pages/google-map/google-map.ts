@@ -22,7 +22,7 @@ export class GoogleMapPage {
   markers = [];
   map: any;
   // creates a reference in the firebase database
-  ref = firebase.database().ref('geolocations/');
+  ref: any = firebase.database().ref('geolocations/');
 
   constructor(
     public navCtrl: NavController, 
@@ -44,7 +44,8 @@ export class GoogleMapPage {
           let updatelocation = new google.maps.LatLng(data.latitude,data.longitude);
           this.addMarker(updatelocation,image);
           this.setMapOnAll(this.map);
-        } else {
+        } 
+        else {
           let image = 'assets/imgs/marker.png';
           let updatelocation = new google.maps.LatLng(data.latitude,data.longitude);
           this.addMarker(updatelocation,image);

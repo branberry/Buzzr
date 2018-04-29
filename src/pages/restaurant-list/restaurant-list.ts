@@ -111,12 +111,6 @@ export class RestaurantListPage {
   }
 
   ionViewDidLoad() {
-    this.geo.getCurrentPosition().then( pos => {
-      this.lat = pos.coords.latitude;
-      this.lng = pos.coords.longitude;
-      console.log(this.lat);
-      console.log(this.lng);
-    }).catch(e => console.error(e));
     console.log('ionViewDidLoad RestaurantListPage');
   }
 
