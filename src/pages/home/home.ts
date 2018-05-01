@@ -27,14 +27,20 @@ export class HomePage {
   async login(user: User) {
     try {
       this.presentLoading();
-      const result = this.afauth.auth.signInWithEmailAndPassword(user.email, user.password);
+      const result = await this.afauth.auth.signInWithEmailAndPassword(user.email,user.password);//user.email, user.password);
       if (result){
         this.navCtrl.setRoot(TabsPage);
         this.loader.dismiss();
       }
     } catch (e) {
       console.error(e);
+      let alert = this.alertCtrl.create({
+        title: 'Login Failed',
+        subTitle: 'Login information provided was incorrect. Please try again.',
+        buttons: ['Okay']
+      });
       this.loader.dismiss();
+      alert.present();
     }
   }
 
@@ -43,11 +49,24 @@ export class HomePage {
     if (this.platform.is('cordova')) {
       return this.fb.login(['email', 'public_profile']).then(res => {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        firebase.auth().signInWithCredential(facebookCredential).then(success=>{
+          if (success){
+            this.loader.dismiss();
+            this.navCtrl.setRoot(TabsPage);
+          }
+        }).catch((error) => { 
+          console.log(error.code);
+          let alert = this.alertCtrl.create({
+            title: 'Login Failed',
+            subTitle: 'Sorry, we could not log you in with Facebook. Please try again.',
+            buttons: ['Okay']
+          });
+          this.loader.dismiss();
+          alert.present();
+        });
+      }).catch((error) => { 
         this.loader.dismiss();
-        this.navCtrl.setRoot(TabsPage);
-        return firebase.auth().signInWithCredential(facebookCredential);
-
-      })
+      });
     }else {
       this.afauth.auth
         .signInWithPopup(new firebase.auth.FacebookAuthProvider())
