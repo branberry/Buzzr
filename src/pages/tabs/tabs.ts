@@ -18,12 +18,11 @@ export class TabsPage {
 
   tab1Root = BuzzerPage;
   tab2Root = RestaurantListPage;
-  tab3Root = AboutPage;
+  tab3Root = GoogleMapPage;
   tab4Root = ContactPage;
-  tab5Root = GoogleMapPage;
 
   title: String;
-  titles = ["Buzzer","Restaurants","About","Contact", "Map"];
+  titles = ["Buzzer","Restaurants", "Map","Contact"];
 
   constructor(private afauth: AngularFireAuth,public navCtrl: NavController) {
     this.title = this.titles[0];

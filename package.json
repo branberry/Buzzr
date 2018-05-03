@@ -34,7 +34,6 @@
     "@tensorflow/tfjs": "^0.9.1",
     "angularfire2": "^5.0.0-rc.6.0",
     "cordova-android": "^7.0.0",
-    "cordova-ios": "~4.5.4",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-facebook4": "^1.10.0",
     "cordova-plugin-geolocation": "^4.0.1",
@@ -50,7 +49,8 @@
     "promise-polyfill": "^7.1.2",
     "rxjs": "5.5.8",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.20"
+    "zone.js": "0.8.20",
+    "cordova-ios": "~4.5.4"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^3.1.8",
@@ -74,8 +74,8 @@
       }
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
