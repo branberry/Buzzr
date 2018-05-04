@@ -4,5 +4,6 @@ export const FIREBASE_CONFIG = {
     databaseURL: "https://buzzer-project.firebaseio.com",
     projectId: "buzzer-project",
     storageBucket: "buzzer-project.appspot.com",
-    messagingSenderId: "828030420257"
+    messagingSenderId: "828030420257",
+
   };

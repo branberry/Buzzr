@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { 
+  IonicPage, 
+  NavController, 
+  NavParams, 
+  ActionSheetController, 
+  AlertController, 
+  PopoverController,
+  MenuController
+ } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 /**
@@ -25,6 +33,7 @@ export class RestaurantListPage {
     public actionSheetCtrl: ActionSheetController, 
     public alertCtrl: AlertController,
     public geo: Geolocation,
+    public menuCtrl: MenuController,
     ) {
 
     // pushing arbitrary values into an array to display for the list
@@ -57,26 +66,7 @@ export class RestaurantListPage {
    * @param restaurantNum the value of the restaurant (placeholder param)
    */
   viewRestaurant(restaurantNum: number) {
-    let actionSheet = this.actionSheetCtrl.create({
-      // title of the individual restaurant
-      title: 'Restaurant ' + restaurantNum.toString() + ' Information',
-      buttons: [
-        {
-          text: 'Restaurant Queue',
-          handler: () => {
-            console.log('Displaying Queue');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+    
     console.log("Page loaded")
   }
 

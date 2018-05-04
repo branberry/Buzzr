@@ -19,6 +19,16 @@
       This div utilizes the array from the resaurant-list.ts file named 'items'
       loops through each element in that array and then displays a thumbnail of each
     -->
+    <ion-menu [content]="mycontent">
+      <ion-content>
+        <ion-list>
+          <p>some menu content, could be list items</p>
+          <ion-item menuClose detail-none>Close Menu</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    
+    <ion-nav #mycontent [root]="rootPage"></ion-nav>
     <ion-item *ngFor="let i of items">
       <ion-thumbnail item-start>
           <img src="https://static1.squarespace.com/static/54bbea0de4b06fad9b9d20c9/t/5518b9eae4b0ac8577b2262a/1522693273020/">
@@ -26,7 +36,7 @@
       <h2>Restaurant {{i}}</h2>
       <p>Super delicious food!</p>
       <button ion-button clear item-end (click)="enqueue(i)">Check in</button>
-      <button ion-button clear item-end (click)="viewRestaurant(i)">Restaurant Page</button>
+      <button ion-button clear item-end menuToggle (click)="viewRestaurant(i)">Restaurant Page</button>
     </ion-item>
   </ion-list>
 
