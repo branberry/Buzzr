@@ -67,7 +67,8 @@ export class RestaurantListPage {
    */
   viewRestaurant(restaurantNum: number) {
     
-    console.log("Page loaded")
+    this.menuCtrl.open();
+    console.log("Page loaded");
   }
 
   /**

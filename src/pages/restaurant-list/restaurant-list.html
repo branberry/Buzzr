@@ -23,7 +23,7 @@
       <ion-content>
         <ion-list>
           <p>some menu content, could be list items</p>
-          <ion-item menuClose detail-none>Close Menu</ion-item>
+          <button ion-button menuClose round outline>Close Menu</button>
         </ion-list>
       </ion-content>
     </ion-menu>
@@ -36,7 +36,7 @@
       <h2>Restaurant {{i}}</h2>
       <p>Super delicious food!</p>
       <button ion-button clear item-end (click)="enqueue(i)">Check in</button>
-      <button ion-button clear item-end menuToggle (click)="viewRestaurant(i)">Restaurant Page</button>
+      <button ion-button clear item-end (click)="viewRestaurant(i)">Restaurant Page</button>
     </ion-item>
   </ion-list>
 
