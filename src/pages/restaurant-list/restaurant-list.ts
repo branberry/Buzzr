@@ -10,6 +10,8 @@ import {
  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { RemoteServiceProvider } from '../../providers/remote-service/remote-service'; 
+
 /**
  * Generated class for the RestaurantListPage page.
  *
@@ -23,7 +25,8 @@ import { Geolocation } from '@ionic-native/geolocation';
   templateUrl: 'restaurant-list.html',
 })
 export class RestaurantListPage {
-  items = [];
+  items: any  = [];
+  postList: any = [];
   lat: any;
   lng: any;
 
@@ -34,7 +37,11 @@ export class RestaurantListPage {
     public alertCtrl: AlertController,
     public geo: Geolocation,
     public menuCtrl: MenuController,
+    private remoteService: RemoteServiceProvider,
     ) {
+
+    // calling the getPosts method to fill postList array with post information
+    this.getPosts();
 
     // pushing arbitrary values into an array to display for the list
     for(let i = 0; i < 10; i++) {      
@@ -99,6 +106,15 @@ export class RestaurantListPage {
       ]
     });
     alert.present();
+  }
+
+  /**
+   * Retrieves post from the remote service provider and fills the postList array
+   */
+  getPosts() {
+    this.remoteService.getPosts().subscribe((data) => {
+      this.postList = data;
+    });
   }
 
   ionViewDidLoad() {

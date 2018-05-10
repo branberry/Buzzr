@@ -22,7 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { GoogleMapPage } from '../pages/google-map/google-map';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
-
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-
+    HttpModule,
     AngularFireDatabaseModule,
     HttpClientModule,
     AngularFireAuthModule
