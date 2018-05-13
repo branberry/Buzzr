@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
-import { BuzzerPage } from '../buzzer/buzzer';
 import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models/user';

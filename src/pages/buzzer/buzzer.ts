@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireAuth } from "angularfire2/auth";
-
 
 @IonicPage()
 @Component({
@@ -10,7 +8,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 })
 export class BuzzerPage {
 
-  constructor(private afauth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
   }
 

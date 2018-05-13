@@ -5,7 +5,6 @@ import {
   NavParams, 
   ActionSheetController, 
   AlertController, 
-  PopoverController,
   MenuController
  } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
