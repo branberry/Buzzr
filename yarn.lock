@@ -207,7 +207,7 @@
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.6.0.tgz#758a04c27e060f9b906eac1740efb0161ea1d4b9"
 
-"@ionic/app-scripts@^3.1.8":
+"@ionic/app-scripts@^3.1.9":
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/@ionic/app-scripts/-/app-scripts-3.1.9.tgz#6f45bb9f10e2674ed5e6270e758ccfb368af9478"
   dependencies:
@@ -333,9 +333,9 @@ android-versions@^1.3.0:
   dependencies:
     semver "^5.4.1"
 
-angularfire2@^5.0.0-rc.6.0:
-  version "5.0.0-rc.6.0"
-  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-5.0.0-rc.6.0.tgz#74e0a69dc317a646c45faf29949e5b06e1107b8c"
+angularfire2@^5.0.0-rc.5-next:
+  version "5.0.0-rc.5-next"
+  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-5.0.0-rc.5-next.tgz#e5b4f0fe994e106276d86133734dc7949d127cb1"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -1015,7 +1015,7 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-cordova-android@^7.0.0:
+cordova-android@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/cordova-android/-/cordova-android-7.1.0.tgz#1cd36ee7b9d19bad50d3e9842b731fe590924dd5"
   dependencies:
@@ -1076,11 +1076,11 @@ cordova-ios@~4.5.4:
     xcode "^0.9.0"
     xml-escape "^1.1.0"
 
-cordova-plugin-device@^2.0.1:
+cordova-plugin-device@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-2.0.2.tgz#fc08f3722e67eef7b6c67bfc99a83df6add0baba"
 
-cordova-plugin-facebook4@^1.10.0:
+cordova-plugin-facebook4@^1.10.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-facebook4/-/cordova-plugin-facebook4-1.10.1.tgz#936ffebb8bbf42a29699ad589c25a6ab90217e9f"
 
@@ -1092,7 +1092,7 @@ cordova-plugin-ionic-keyboard@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-keyboard/-/cordova-plugin-ionic-keyboard-2.0.5.tgz#c7c35ffd8f6a1ef77e27a1eee70ccaa2e94f99e1"
 
-cordova-plugin-ionic-webview@^1.2.0:
+cordova-plugin-ionic-webview@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.2.1.tgz#6d2162a2b1c593de436359d0746afc28b6a28d57"
 
