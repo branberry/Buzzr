@@ -69,7 +69,7 @@ export class GoogleMapPage {
    * Creating the instance of a google map in the app
    */
   initMap() {
-
+    let location = {}
   }
 
   deleteMarkers() {
@@ -88,7 +88,7 @@ export class GoogleMapPage {
   addMarker(location, image) {
     let marker =  new google.maps.Marker({
       position: location,
-      maps: this.map,
+      maps: map,
       icon: image,
     });
     this.markers.push(marker);
