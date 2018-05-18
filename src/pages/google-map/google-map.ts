@@ -11,6 +11,13 @@ import * as firebase from 'firebase';
  */
 
  declare var google: any; 
+ let map: any;
+ let infoWindow: any;
+ let options = {
+   enableHighAccuracy: true,
+   timeout: 5000,
+   maximumAge: 0,
+ };
 
 @IonicPage()
 @Component({
@@ -20,7 +27,6 @@ import * as firebase from 'firebase';
 export class GoogleMapPage {
   @ViewChild('map') mapElement: ElementRef;
   markers = [];
-  map: any;
   // creates a reference in the firebase database
   ref: any = firebase.database().ref('geolocations/');
 
@@ -35,7 +41,7 @@ export class GoogleMapPage {
       this.initMap();
     });
 
-    this.ref.on('value', resp =>{
+    this.ref.on('value', resp => {
       this.deleteMarkers();
 
       snapshotToArray(resp).forEach(data => {
@@ -59,27 +65,11 @@ export class GoogleMapPage {
     console.log('ionViewDidLoad GoogleMapPage');
   }
 
+  /**
+   * Creating the instance of a google map in the app
+   */
   initMap() {
-    this.geolocation.getCurrentPosition({maximumAge: 3000, timeout: 5000, enableHighAccuracy: true}).then(resp => {
-      let myLocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
-      this.map = new google.maps.Map(this.mapElement.nativeElement, {
-        zoom: 15,
-        center: myLocation
-      });
-    });
 
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe(data => {
-      this.deleteMarkers();
-
-      // update firebase database
-      this.updateGeolocation(this.device.uuid,data.coords.latitude,data.coords.longitude);
-
-      let updateLocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
-      let image = 'assets/imgs/marker.png';
-      this.addMarker(updateLocation,image);
-      this.setMapOnAll(this.map);
-    });
   }
 
   deleteMarkers() {
@@ -88,6 +78,13 @@ export class GoogleMapPage {
 
   }
 
+
+
+  /**
+   * This method is used to create a generic marker and add an image for  the marker as well
+   * @param location 
+   * @param image 
+   */
   addMarker(location, image) {
     let marker =  new google.maps.Marker({
       position: location,
@@ -104,7 +101,7 @@ export class GoogleMapPage {
   }
 
   clearMarkers() {
-    // sets all the marker array to null
+    // sets all the marker array to null; clearing all markers from the map
     this.setMapOnAll(null);
   }
 
@@ -140,3 +137,69 @@ export const snapshotToArray = snapshot => {
 
   return snapshotArr
 }
+
+
+
+/**
+ * 
+ * 
+ * CODE GRAVEYARD
+ * 
+ *     this.geolocation.getCurrentPosition(options).then(resp => {
+      let myLocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
+      this.map = new google.maps.Map(this.mapElement.nativeElement, {
+        zoom: 15,
+        center: myLocation
+      });
+    });
+    /**
+     * This method creates the generic markers for each location loaded into the map
+     * @param place 
+     /
+    function createMarker(place) {
+      let placeLoc = place.geometry.location;
+      let marker = new google.maps.Marker({
+        map: this.map,
+        position: place.geometry.location,
+      });
+
+      google.maps.event.addListener(marker, 'click', () => {
+        infoWindow.setContent(place.name);
+        infoWindow.open(this.map,this);
+      });
+    }
+
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe(data => {
+      this.deleteMarkers();
+
+      // update firebase database
+      this.updateGeolocation(this.device.uuid,data.coords.latitude,data.coords.longitude);
+
+      let updateLocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+
+      // creating a new instance of a window to hold a place from google maps
+      infoWindow = new google.maps.InfoWindow();
+
+      // creating the service provider object
+      let service = new google.maps.places.PlacesService(this.map);
+
+      // defining the search area
+      let requestBounds = {
+        location: updateLocation,
+        radius: 1000,
+        type: ['restaurant']
+      }
+      // running the service
+      service.nearbySearch(requestBounds, callback);
+      
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for(let i = 0; i < results.length; i++) {
+            let place = results[i];
+            createMarker(place);
+          }
+        }
+      }
+    });
+ */
