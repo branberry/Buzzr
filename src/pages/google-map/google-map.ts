@@ -40,25 +40,6 @@ export class GoogleMapPage {
     this.platform.ready().then(() => { 
       this.initMap();
     });
-
-    this.ref.on('value', resp => {
-      this.deleteMarkers();
-
-      snapshotToArray(resp).forEach(data => {
-        if(data.uuid !== this.device.uuid) {
-          let image = 'assets/imgs/marker.png';
-          let updatelocation = new google.maps.LatLng(data.latitude,data.longitude);
-          this.addMarker(updatelocation,image);
-          this.setMapOnAll(this.map);
-        } 
-        else {
-          let image = 'assets/imgs/marker.png';
-          let updatelocation = new google.maps.LatLng(data.latitude,data.longitude);
-          this.addMarker(updatelocation,image);
-          this.setMapOnAll(this.map);
-        }    
-      });
-    });
   }
 
   ionViewDidLoad() {
@@ -69,29 +50,74 @@ export class GoogleMapPage {
    * Creating the instance of a google map in the app
    */
   initMap() {
-    let location = {}
+    let myLocation: any;
+    // making a geolocation call to retrieve the latitude and longitude
+    this.geolocation.getCurrentPosition().then((resp) => {
+      myLocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
+      // generating the map using the google maps api
+      map = new google.maps.Map(this.mapElement.nativeElement, {
+      center: myLocation,
+      zoom: 15,
+      });
+    });
+
+
+
+
+    // generating the request that we will use as an argument for the search
+    let request = {
+      location: myLocation,
+      radius: '500',
+      type: ['restaurant']
+    };
+
+    // creating the search service using our map
+    let service = new google.maps.places.PlacesService(map);
+
+    // calling the services using the request and the callback method to load the markers
+    service.nearbySearch(request,this.loadMarkers)
+  }
+
+  /**
+   * This method is the callback function that will load the markers onto the map from the 
+   * PlaceService request.
+   * 
+   * @param results the results array that is returned from google maps
+   */
+  loadMarkers(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (let i = 0; i < results.length; i++) {
+        let place = results[i];
+        this.createMarker(place);
+      }
+    }
+  }
+
+  /**
+   * This method places the marker on the map.
+   * @param place the location returned from a google maps api call
+   */
+  createMarker(place) {
+    // identifying the coordinates of the location
+    let placeLoc = place.geometry.Location;
+
+    // instantiating a marker for the location
+    let marker = new google.maps.Marker({
+      map: map,
+      position: placeLoc
+    });
+
+    // allows the marker to be populated with information when clicked
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.setContent(place.name);
+      infoWindow.open(map,this);
+    });
   }
 
   deleteMarkers() {
     this.clearMarkers();
     this.markers = [];
 
-  }
-
-
-
-  /**
-   * This method is used to create a generic marker and add an image for  the marker as well
-   * @param location 
-   * @param image 
-   */
-  addMarker(location, image) {
-    let marker =  new google.maps.Marker({
-      position: location,
-      maps: map,
-      icon: image,
-    });
-    this.markers.push(marker);
   }
 
   setMapOnAll(map) {

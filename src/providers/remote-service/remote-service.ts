@@ -1,10 +1,13 @@
 import { Http ,Response } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/throw';
 
+const proxy = "http://localhost:1337/";
 /*
   Generated class for the RemoteServiceProvider provider.
 
@@ -13,7 +16,7 @@ import { Observable } from 'rxjs/Observable'
 */
 @Injectable()
 export class RemoteServiceProvider {
-  getApiUrl: string = "https://jsonplaceholder.typicode.com/posts";
+  getApiUrl: string = proxy + "jsonplaceholder.typicode.com/posts";
   constructor(public http: Http) {
     console.log('Hello RemoteServiceProvider Provider');
   }
