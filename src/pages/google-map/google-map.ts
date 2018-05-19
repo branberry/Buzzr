@@ -67,23 +67,25 @@ export class GoogleMapPage {
       zoom: 15,
       });
 
+      // generating the request that we will use as an argument for the search
       let request = {
         location: {lat: resp.coords.latitude, lng: resp.coords.longitude},
         radius: '2000',
-        type: ['store']
+        type: ['restaurant']
       };
-  
-      // generating the request that we will use as an argument for the search
-  
-      
+   
       //instantiating the infowindow
       infoWindow = new google.maps.InfoWindow();
-  
+      
+      // creating the error handler for the service
+      function errorHandler(error) {
+        console.error(error);;
+      }
+
       // creating the search service using our map
       let service = new google.maps.places.PlacesService(map);
-  
-      // calling the services using the request and the callback method to load the markers
-      service.nearbySearch(request,this.loadMarkers)
+
+      service.nearbySearch(request,this.loadMarkers,errorHandler,options)
     });
   }
 
@@ -94,15 +96,25 @@ export class GoogleMapPage {
    * @param results the results array that is returned from google maps
    */
   loadMarkers(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
         let place = results[i];
+        console.log(place)
           // identifying the coordinates of the location
         let placeLoc = place.geometry.Location;
+
+        let image = {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
           // instantiating a marker for the location
         let marker = new google.maps.Marker({
           map: map,
-          position: placeLoc
+          position: placeLoc,
+          icon: image
         });
 
         // allows the marker to be populated with information when clicked
