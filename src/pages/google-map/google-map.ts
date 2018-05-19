@@ -25,8 +25,13 @@ import * as firebase from 'firebase';
   templateUrl: 'google-map.html',
 })
 export class GoogleMapPage {
+  
+  // identifying the map div
   @ViewChild('map') mapElement: ElementRef;
+
+  // map markers array 
   markers = [];
+
   // creates a reference in the firebase database
   ref: any = firebase.database().ref('geolocations/');
 
@@ -54,28 +59,32 @@ export class GoogleMapPage {
     // making a geolocation call to retrieve the latitude and longitude
     this.geolocation.getCurrentPosition().then((resp) => {
       myLocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
+
+
       // generating the map using the google maps api
       map = new google.maps.Map(this.mapElement.nativeElement, {
       center: myLocation,
       zoom: 15,
       });
+
+      let request = {
+        location: {lat: resp.coords.latitude, lng: resp.coords.longitude},
+        radius: '2000',
+        type: ['store']
+      };
+  
+      // generating the request that we will use as an argument for the search
+  
+      
+      //instantiating the infowindow
+      infoWindow = new google.maps.InfoWindow();
+  
+      // creating the search service using our map
+      let service = new google.maps.places.PlacesService(map);
+  
+      // calling the services using the request and the callback method to load the markers
+      service.nearbySearch(request,this.loadMarkers)
     });
-
-
-
-
-    // generating the request that we will use as an argument for the search
-    let request = {
-      location: myLocation,
-      radius: '500',
-      type: ['restaurant']
-    };
-
-    // creating the search service using our map
-    let service = new google.maps.places.PlacesService(map);
-
-    // calling the services using the request and the callback method to load the markers
-    service.nearbySearch(request,this.loadMarkers)
   }
 
   /**
@@ -88,30 +97,21 @@ export class GoogleMapPage {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
         let place = results[i];
-        this.createMarker(place);
+          // identifying the coordinates of the location
+        let placeLoc = place.geometry.Location;
+          // instantiating a marker for the location
+        let marker = new google.maps.Marker({
+          map: map,
+          position: placeLoc
+        });
+
+        // allows the marker to be populated with information when clicked
+        google.maps.event.addListener(marker, 'click', () => {
+          infoWindow.setContent(place.name);
+          infoWindow.open(map,this);
+        });
       }
     }
-  }
-
-  /**
-   * This method places the marker on the map.
-   * @param place the location returned from a google maps api call
-   */
-  createMarker(place) {
-    // identifying the coordinates of the location
-    let placeLoc = place.geometry.Location;
-
-    // instantiating a marker for the location
-    let marker = new google.maps.Marker({
-      map: map,
-      position: placeLoc
-    });
-
-    // allows the marker to be populated with information when clicked
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.setContent(place.name);
-      infoWindow.open(map,this);
-    });
   }
 
   deleteMarkers() {
