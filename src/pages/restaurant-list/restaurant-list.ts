@@ -10,13 +10,15 @@ import {
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service'; 
-
+import { GoogleMapPage } from '../google-map/google-map';
 /**
  * Generated class for the RestaurantListPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var google: any; 
+let map: any;
 
 @IonicPage()
 @Component({
@@ -38,6 +40,8 @@ export class RestaurantListPage {
     public menuCtrl: MenuController,
     private remoteService: RemoteServiceProvider,
     ) {
+    // calling this method to retrieve all of the local restaruants
+    this.getRestaurants();
 
     // calling the getPosts method to fill postList array with post information
     this.getPosts();
@@ -113,6 +117,24 @@ export class RestaurantListPage {
   getPosts() {
     this.remoteService.getPosts().subscribe((data) => {
       this.postList = data;
+    });
+  }
+
+  /**
+   * Retrieves the restaurants within a given radius
+   * 
+   */
+  getRestaurants() {
+    this.geo.getCurrentPosition().then(resp => {
+    // generating the request that we will use as an argument for the search
+    let request = {
+      location: {lat: resp.coords.latitude, lng: resp.coords.longitude},
+      radius: '2000',
+      type: ['restaurant']
+      };
+
+      let service = new google.maps.places.PlacesService();
+      console.log(service)
     });
   }
 
