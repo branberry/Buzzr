@@ -23,6 +23,7 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import { GoogleMapPage } from '../pages/google-map/google-map';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 import { HttpModule } from '@angular/http';
+import { PlacesProvider } from '../providers/places/places';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { HttpModule } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Device,
     RemoteServiceProvider,
+    PlacesProvider,
 
   ]
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { 
   IonicPage, 
   NavController, 
@@ -18,7 +18,6 @@ import { GoogleMapPage } from '../google-map/google-map';
  * Ionic pages and navigation.
  */
 declare var google: any; 
-let map: any;
 
 @IonicPage()
 @Component({
@@ -26,6 +25,9 @@ let map: any;
   templateUrl: 'restaurant-list.html',
 })
 export class RestaurantListPage {
+  // this identifies the html tag that has the id 'list'
+  @ViewChild('list') listElement: ElementRef;
+
   items: any  = [];
   postList: any = [];
   lat: any;
@@ -45,6 +47,9 @@ export class RestaurantListPage {
 
     // calling the getPosts method to fill postList array with post information
     this.getPosts();
+
+    // retrieving the place photo url
+    this.getPlacePhoto(1);
 
     // pushing arbitrary values into an array to display for the list
     for(let i = 0; i < 10; i++) {      
@@ -120,6 +125,12 @@ export class RestaurantListPage {
     });
   }
 
+  getPlacePhoto(placeId) {
+    this.remoteService.getPlacePhoto(placeId).subscribe((data) => {
+      console.log(data);
+    });
+  }
+  
   /**
    * Retrieves the restaurants within a given radius
    * 
@@ -127,14 +138,24 @@ export class RestaurantListPage {
   getRestaurants() {
     this.geo.getCurrentPosition().then(resp => {
     // generating the request that we will use as an argument for the search
+    console.log(resp.coords.latitude)
     let request = {
       location: {lat: resp.coords.latitude, lng: resp.coords.longitude},
       radius: '2000',
       type: ['restaurant']
       };
 
-      let service = new google.maps.places.PlacesService();
-      console.log(service)
+    // the function that will be used for the callback function for the nearby search
+    function callback(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for(let i = 0; i < results.length; i++) {
+          let place = results[i];
+          console.log(results[i]);
+        }
+      }
+    }
+      let service = new google.maps.places.PlacesService(this.listElement.nativeElement);
+      service.nearbySearch(request,callback);
     });
   }
 

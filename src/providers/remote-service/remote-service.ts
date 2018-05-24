@@ -17,6 +17,7 @@ const proxy = "http://localhost:1337/";
 @Injectable()
 export class RemoteServiceProvider {
   getApiUrl: string = proxy + "jsonplaceholder.typicode.com/posts";
+  placeDetailsUrl: string = proxy + "https://maps.googleapis.com/maps/api/place/details/json?c35e8bff0ccf6ae27498074ec14b32dbe6638469"
   constructor(public http: Http) {
     console.log('Hello RemoteServiceProvider Provider');
   }
@@ -26,6 +27,15 @@ export class RemoteServiceProvider {
    */
   getPosts() {
     return this.http.get(this.getApiUrl)
+    .do((res: Response) => console.log(res.json()))
+    .map((res: Response ) => res.json())
+    .catch((error: any) => {
+      return Observable.throw(error);
+    });
+  }
+
+  getPlacePhoto(placeId) {
+    return this.http.get(this.placeDetailsUrl)
     .do((res: Response) => console.log(res.json()))
     .map((res: Response ) => res.json())
     .catch((error: any) => {

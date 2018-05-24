@@ -79,7 +79,7 @@ export class GoogleMapPage {
       
       // creating the error handler for the service
       function errorHandler(error) {
-        console.error(error);;
+        console.error(error);
       }
 
       // creating the search service using our map
@@ -99,7 +99,7 @@ export class GoogleMapPage {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (let i = 0; i < results.length; i++) {
         let place = results[i];
-        console.log(place)
+      
           // identifying the coordinates of the location
         let placeLoc = place.geometry.Location;
 
